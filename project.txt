@@ -1,0 +1,15 @@
+You're to create a secure sign up and login page that will log you into a page that displays your name and reg number. 
+
+Marks will be awarded for:
+1. Presentation ( README file that describes your project and general appearance).
+2. Application of secure Coding principals. 
+3. Implementing OWASP TOP 10.
+4. Unit testing.
+5. Any other special features that you may add to the project eg password generator function.
+
+You're to submit this project individually on GitHub the day you come back on campus.
+
+
+ You're to use Java programming language. 
+
+ Total marks 100
