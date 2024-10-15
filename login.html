@@ -1,110 +1,152 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Set the character encoding for the document -->
     <meta charset="UTF-8">
+    <!-- Ensure the page is responsive on different devices -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <!-- Title of the webpage -->
+    <title>nmbUSINESSES</title>
     <style>
-        /* Basic Reset */
+        /* Basic Reset: Remove default margin and padding */
         * {
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
+            box-sizing: border-box; /* Include padding and border in element's total width and height */
         }
 
+        /* Body styling */
         body {
-            background: #f0f0f5;
+            /* Set a gradient background */
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            /* Set font family */
             font-family: Arial, sans-serif;
+            /* Center content both vertically and horizontally */
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            height: 100vh; /* Full height of the viewport */
+            background-size: cover; /* Cover the entire background */
         }
 
-        /* Container Styling */
+        /* Container Styling for the login form */
         .login-container {
-            background: #fff;
-            padding: 2rem;
+            /* Semi-transparent white background */
+            background: rgba(255, 255, 255, 0.8);
+            /* Padding inside the container */
+            padding: 3rem 2rem;
+            /* Full width with a max width limit */
             width: 100%;
-            max-width: 400px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 450px; /* Maximum width of the container */
+            /* Rounded corners */
+            border-radius: 15px;
+            /* Shadow for depth effect */
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+            /* Center text */
             text-align: center;
         }
 
+        /* Header styling inside the container */
         .login-container h2 {
-            margin-bottom: 1.5rem;
-            color: #333;
+            margin-bottom: 2rem; /* Space below the heading */
+            color: #444; /* Text color */
+            font-size: 2rem; /* Font size */
         }
 
-        /* Input Styling */
+        /* Input group styling */
         .input-group {
-            margin-bottom: 1.2rem;
+            margin-bottom: 1.5rem; /* Space below each input group */
         }
 
+        /* Input field styling */
         .input-group input {
-            width: 100%;
-            padding: 0.8rem;
-            font-size: 1rem;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-            outline: none;
-            transition: all 0.3s ease;
+            width: 100%; /* Full width of the container */
+            padding: 0.8rem; /* Padding inside the input */
+            font-size: 1rem; /* Font size */
+            border-radius: 25px; /* Rounded corners */
+            border: 1px solid #ccc; /* Light gray border */
+            outline: none; /* Remove outline */
+            transition: all 0.3s ease; /* Smooth transition for focus effects */
         }
 
+        /* Styling for input when focused */
         .input-group input:focus {
-            border-color: #007bff;
-            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+            border-color: #6a11cb; /* Change border color */
+            box-shadow: 0 0 8px rgba(106, 17, 203, 0.5); /* Add shadow effect */
         }
 
-        /* Button Styling */
+        /* Button styling */
         .btn {
-            background: #007bff;
-            color: #fff;
-            border: none;
-            padding: 0.8rem 1.5rem;
-            border-radius: 5px;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: background 0.3s ease;
+            background: #6a11cb; /* Button background color */
+            color: #fff; /* Text color */
+            border: none; /* No border */
+            padding: 0.8rem; /* Padding inside the button */
+            width: 100%; /* Full width */
+            border-radius: 25px; /* Rounded corners */
+            font-size: 1rem; /* Font size */
+            cursor: pointer; /* Pointer cursor on hover */
+            transition: background 0.3s ease; /* Smooth background transition */
+            margin-top: 1rem; /* Space above the button */
         }
 
+        /* Button hover effect */
         .btn:hover {
-            background: #0056b3;
+            background: #2575fc; /* Change background color on hover */
         }
 
-        /* Additional Options */
+        /* Additional options styling */
         .options {
-            margin-top: 1rem;
-            font-size: 0.9rem;
+            margin-top: 1rem; /* Space above the options */
+            font-size: 0.9rem; /* Font size */
+            display: flex; /* Use flexbox for layout */
+            justify-content: space-between; /* Space between items */
+            align-items: center; /* Center align items */
         }
 
+        /* Styling for labels within options */
+        .options label {
+            display: flex; /* Use flexbox for label */
+            align-items: center; /* Center align items */
+        }
+
+        /* Checkbox spacing */
+        .options input[type="checkbox"] {
+            margin-right: 0.3rem; /* Space to the right of the checkbox */
+        }
+
+        /* Link styling within options */
         .options a {
-            color: #007bff;
-            text-decoration: none;
-            transition: color 0.3s ease;
+            color: #6a11cb; /* Link color */
+            text-decoration: none; /* Remove underline */
+            transition: color 0.3s ease; /* Smooth color transition */
         }
 
+        /* Link hover effect */
         .options a:hover {
-            color: #0056b3;
+            color: #2575fc; /* Change link color on hover */
         }
     </style>
 </head>
 <body>
     <div class="login-container">
-        <h2>Sign In</h2>
+        <h2>Welcome Back!</h2> <!-- Main heading -->
         <form>
             <div class="input-group">
-                <input type="email" placeholder="Email" required>
+                <input type="email" placeholder="Email" required> <!-- Email input field -->
             </div>
             <div class="input-group">
-                <input type="password" placeholder="Password" required>
+                <input type="password" placeholder="Password" required> <!-- Password input field -->
             </div>
-            <button type="submit" class="btn">Login</button>
+            <div class="options">
+                <label>
+                    <input type="checkbox"> Remember Me <!-- Checkbox for remembering user login -->
+                </label>
+                <a href="#">Forgot Password?</a> <!-- Link for forgotten password -->
+            </div>
+            <button type="submit" class="btn">Sign In</button> <!-- Submit button -->
         </form>
-        <div class="options">
-            <p><a href="#">Forgot Password?</a></p>
-            <p>Don't have an account? <a href="#">Register Now</a></p>
+        <div class="options" style="margin-top: 2rem;">
+            <p>Don't have an account? <a href="#">Register Now</a></p> <!-- Link to registration page -->
         </div>
     </div>
 </body>
