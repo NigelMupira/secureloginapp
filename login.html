@@ -1,81 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Set the character encoding for the document -->
-    <meta charset="UTF-8">
-    <!-- Ensure the page is responsive on different devices -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Title of the webpage -->
-    <title>nmbUSINESSES</title>
+    <meta charset="UTF-8"> <!-- Set the character encoding for the document -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Ensure the page is responsive on different devices -->
+    <title>nmbUSINESSES</title> <!-- Title of the webpage -->
     <style>
-        /* Basic Reset: Remove default margin and padding */
+        /* Basic Reset */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box; /* Include padding and border in element's total width and height */
         }
 
-        /* Body styling */
         body {
-            /* Set a gradient background */
-            background: linear-gradient(135deg, #6a11cb, #2575fc);
-            /* Set font family */
-            font-family: Arial, sans-serif;
-            /* Center content both vertically and horizontally */
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            background: linear-gradient(135deg, #6a11cb, #2575fc); /* Set a gradient background */
+            font-family: Arial, sans-serif; /* Set font family */
+            display: flex; /* Use flexbox for layout */
+            justify-content: center; /* Center content horizontally */
+            align-items: center; /* Center content vertically */
             height: 100vh; /* Full height of the viewport */
             background-size: cover; /* Cover the entire background */
         }
 
-        /* Container Styling for the login form */
+        /* Container Styling */
         .login-container {
-            /* Semi-transparent white background */
-            background: rgba(255, 255, 255, 0.8);
-            /* Padding inside the container */
-            padding: 3rem 2rem;
-            /* Full width with a max width limit */
-            width: 100%;
+            background: rgba(255, 255, 255, 0.5); /* Semi-transparent white background */
+            padding: 3rem 2rem; /* Padding inside the container */
+            width: 100%; /* Full width with a max width limit */
             max-width: 450px; /* Maximum width of the container */
-            /* Rounded corners */
-            border-radius: 15px;
-            /* Shadow for depth effect */
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-            /* Center text */
-            text-align: center;
+            border-radius: 15px; /* Rounded corners */
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* Shadow for depth effect */
+            text-align: center; /* Center text */
         }
 
-        /* Header styling inside the container */
         .login-container h2 {
             margin-bottom: 2rem; /* Space below the heading */
             color: #444; /* Text color */
             font-size: 2rem; /* Font size */
         }
 
-        /* Input group styling */
+        /* Input Styling */
         .input-group {
+            position: relative; /* Enable positioning of child elements */
             margin-bottom: 1.5rem; /* Space below each input group */
         }
 
-        /* Input field styling */
         .input-group input {
             width: 100%; /* Full width of the container */
-            padding: 0.8rem; /* Padding inside the input */
+            padding: 0.8rem 2.5rem; /* Padding inside the input with extra space for icons */
             font-size: 1rem; /* Font size */
             border-radius: 25px; /* Rounded corners */
             border: 1px solid #ccc; /* Light gray border */
             outline: none; /* Remove outline */
             transition: all 0.3s ease; /* Smooth transition for focus effects */
+            background-color: #f7f7f7; /* Accent color for input */
         }
 
-        /* Styling for input when focused */
         .input-group input:focus {
-            border-color: #6a11cb; /* Change border color */
+            border-color: #6a11cb; /* Change border color on focus */
             box-shadow: 0 0 8px rgba(106, 17, 203, 0.5); /* Add shadow effect */
+            background-color: #e0e0ff; /* Different accent color on focus */
         }
 
-        /* Button styling */
+        /* Icon Styling */
+        .input-group img {
+            position: absolute; /* Position the icons relative to the input */
+            left: 10px; /* Position from the left */
+            top: 50%; /* Center vertically */
+            transform: translateY(-50%); /* Adjust position to center */
+            width: 20px; /* Icon width */
+            height: 20px; /* Icon height */
+            opacity: 0.6; /* Set transparency */
+        }
+
+        /* Show Password Button Styling */
+        .show-password {
+            position: absolute; /* Position the button relative to the input */
+            right: 10px; /* Position from the right */
+            top: 50%; /* Center vertically */
+            transform: translateY(-50%); /* Adjust position to center */
+            background: url("icons/show.ico") no-repeat center; /* Set background image for showing password */
+            background-size: 20px 20px; /* Size of the background image */
+            border: none; /* No border */
+            width: 25px; /* Button width */
+            height: 25px; /* Button height */
+            cursor: pointer; /* Pointer cursor on hover */
+            opacity: 0.6; /* Set transparency */
+        }
+
+        /* Change the button image when password is showing */
+        .show-password.showing {
+            background: url("icons/hide.ico") no-repeat center; /* Set background image for hiding password */
+            background-size: 20px 20px; /* Size of the background image */
+        }
+
+        /* Button Styling */
         .btn {
             background: #6a11cb; /* Button background color */
             color: #fff; /* Text color */
@@ -86,10 +105,9 @@
             font-size: 1rem; /* Font size */
             cursor: pointer; /* Pointer cursor on hover */
             transition: background 0.3s ease; /* Smooth background transition */
-            margin-top: 1rem; /* Space above the button */
+            margin-top: 6rem; /* Space above the button */
         }
 
-        /* Button hover effect */
         .btn:hover {
             background: #2575fc; /* Change background color on hover */
         }
@@ -125,6 +143,13 @@
         .options a:hover {
             color: #2575fc; /* Change link color on hover */
         }
+
+        /* Footer message */
+        .footer {
+            margin-top: 2rem; /* Space above footer */
+            text-align: center; /* Center text */
+            font-size: 0.9rem; /* Font size */
+        }
     </style>
 </head>
 <body>
@@ -132,10 +157,13 @@
         <h2>Welcome Back!</h2> <!-- Main heading -->
         <form>
             <div class="input-group">
+                <img src="icons/email.ico" alt="User Icon"> <!-- Email icon -->
                 <input type="email" placeholder="Email" required> <!-- Email input field -->
             </div>
             <div class="input-group">
-                <input type="password" placeholder="Password" required> <!-- Password input field -->
+                <img src="icons/pass.ico" alt="Password Icon"> <!-- Password icon -->
+                <input type="password" id="password" placeholder="Password" required> <!-- Password input field -->
+                <button type="button" class="show-password" onclick="togglePassword()"></button> <!-- Button to toggle password visibility -->
             </div>
             <div class="options">
                 <label>
@@ -145,9 +173,23 @@
             </div>
             <button type="submit" class="btn">Sign In</button> <!-- Submit button -->
         </form>
-        <div class="options" style="margin-top: 2rem;">
+        <div class="footer">
             <p>Don't have an account? <a href="#">Register Now</a></p> <!-- Link to registration page -->
         </div>
     </div>
+
+    <script>
+        function togglePassword() {
+            const passwordField = document.getElementById('password'); // Get the password input field
+            const showPasswordButton = document.querySelector('.show-password'); // Get the show password button
+            if (passwordField.type === 'password') { // Check if the password is currently hidden
+                passwordField.type = 'text'; // Change the type to text to show the password
+                showPasswordButton.classList.add('showing'); // Add a class to change the button appearance
+            } else {
+                passwordField.type = 'password'; // Change the type back to password to hide it
+                showPasswordButton.classList.remove('showing'); // Remove the class to revert the button appearance
+            }
+        }
+    </script>
 </body>
 </html>
