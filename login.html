@@ -1,193 +1,263 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8"> <!-- Set the character encoding for the document -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Ensure the page is responsive on different devices -->
-    <title>nmbUSINESSES</title> <!-- Title of the webpage -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
     <style>
         /* Basic Reset */
         * {
             margin: 0;
             padding: 0;
-            box-sizing: border-box; /* Include padding and border in element's total width and height */
+            box-sizing: border-box;
         }
 
         body {
-            background: linear-gradient(135deg, #6a11cb, #2575fc); /* Set a gradient background */
-            font-family: Arial, sans-serif; /* Set font family */
-            display: flex; /* Use flexbox for layout */
-            justify-content: center; /* Center content horizontally */
-            align-items: center; /* Center content vertically */
+            background: linear-gradient(135deg, #6a11cb, #2575fc); /* Gradient background */
+            font-family: Arial, sans-serif; /* Font family for the body */
             height: 100vh; /* Full height of the viewport */
-            background-size: cover; /* Cover the entire background */
+            position: relative; /* Positioning for absolute children */
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            display: flex; /* Flexbox layout for navigation items */
+            justify-content: space-between; /* Space between items */
+            align-items: center; /* Center items vertically */
+            padding: 1rem 2rem; /* Padding around the navbar */
+            background: rgba(255, 255, 255, 0.3); /* Semi-transparent background */
+            position: absolute; /* Absolute positioning at the top */
+            width: 100%; /* Full width of the viewport */
+            top: 0; /* Position at the top */
+            z-index: 1000; /* Layer above other content */
+        }
+
+        .navbar .company-name {
+            font-size: 1.5rem; /* Font size for company name */
+            color: #fff; /* White color for text */
+        }
+
+        .navbar .nav-links {
+            display: flex; /* Flexbox for navigation links */
+            justify-content: center; /* Center the links */
+            flex: 1; /* Take available space */
+            margin: 0 2rem; /* Margin on left and right */
+        }
+
+        .navbar .nav-links a {
+            color: #fff; /* White color for links */
+            text-decoration: none; /* Remove underline from links */
+            margin: 0 1.5rem; /* Margin around links */
+            transition: color 0.3s; /* Transition for hover effect */
+        }
+
+        .navbar .nav-links a:hover {
+            color: #6a11cb; /* Change color on hover */
+        }
+
+        .navbar .login-btn {
+            background: #6a11cb; /* Button background color */
+            color: #fff; /* White text color */
+            border: none; /* Remove border */
+            padding: 0.5rem 1rem; /* Padding inside the button */
+            border-radius: 25px; /* Rounded corners */
+            cursor: pointer; /* Pointer cursor on hover */
+            transition: background 0.3s; /* Transition for hover effect */
+        }
+
+        .navbar .login-btn:hover {
+            background: #2575fc; /* Change background on hover */
         }
 
         /* Container Styling */
         .login-container {
-            background: rgba(255, 255, 255, 0.5); /* Semi-transparent white background */
+            background: rgba(255, 255, 255, 0.5); /* Semi-transparent background */
             padding: 3rem 2rem; /* Padding inside the container */
-            width: 100%; /* Full width with a max width limit */
-            max-width: 450px; /* Maximum width of the container */
+            width: 100%; /* Full width of the container */
+            max-width: 450px; /* Maximum width */
             border-radius: 15px; /* Rounded corners */
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* Shadow for depth effect */
-            text-align: center; /* Center text */
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* Shadow effect */
+            text-align: center; /* Center text alignment */
+            position: absolute; /* Absolute positioning for centering */
+            top: 50%; /* Positioning from top */
+            left: 50%; /* Positioning from left */
+            transform: translate(-50%, -50%); /* Center the container */
+            display: none; /* Initially hidden */
         }
 
         .login-container h2 {
-            margin-bottom: 2rem; /* Space below the heading */
-            color: #444; /* Text color */
-            font-size: 2rem; /* Font size */
+            margin-bottom: 2rem; /* Margin below the header */
+            color: #444; /* Darker color for text */
+            font-size: 2rem; /* Font size for header */
         }
 
         /* Input Styling */
         .input-group {
-            position: relative; /* Enable positioning of child elements */
-            margin-bottom: 1.5rem; /* Space below each input group */
+            position: relative; /* Relative positioning for child elements */
+            margin-bottom: 1.5rem; /* Margin below input groups */
         }
 
         .input-group input {
-            width: 100%; /* Full width of the container */
-            padding: 0.8rem 2.5rem; /* Padding inside the input with extra space for icons */
-            font-size: 1rem; /* Font size */
+            width: 100%; /* Full width of input */
+            padding: 0.8rem 2.5rem; /* Padding for input */
+            font-size: 1rem; /* Font size for input */
             border-radius: 25px; /* Rounded corners */
             border: 1px solid #ccc; /* Light gray border */
             outline: none; /* Remove outline */
-            transition: all 0.3s ease; /* Smooth transition for focus effects */
-            background-color: #f7f7f7; /* Accent color for input */
+            transition: all 0.3s ease; /* Transition for focus effect */
+            background-color: #f7f7f7; /* Accent color */
         }
 
         .input-group input:focus {
             border-color: #6a11cb; /* Change border color on focus */
-            box-shadow: 0 0 8px rgba(106, 17, 203, 0.5); /* Add shadow effect */
+            box-shadow: 0 0 8px rgba(106, 17, 203, 0.5); /* Shadow effect on focus */
             background-color: #e0e0ff; /* Different accent color on focus */
         }
 
         /* Icon Styling */
         .input-group img {
-            position: absolute; /* Position the icons relative to the input */
-            left: 10px; /* Position from the left */
-            top: 50%; /* Center vertically */
+            position: absolute; /* Absolute positioning for icons */
+            left: 10px; /* Positioning to the left */
+            top: 50%; /* Vertical centering */
             transform: translateY(-50%); /* Adjust position to center */
-            width: 20px; /* Icon width */
-            height: 20px; /* Icon height */
-            opacity: 0.6; /* Set transparency */
+            width: 20px; /* Width of icons */
+            height: 20px; /* Height of icons */
+            opacity: 0.6; /* Slightly transparent */
         }
 
         /* Show Password Button Styling */
         .show-password {
-            position: absolute; /* Position the button relative to the input */
-            right: 10px; /* Position from the right */
-            top: 50%; /* Center vertically */
+            position: absolute; /* Absolute positioning for button */
+            right: 10px; /* Positioning to the right */
+            top: 50%; /* Vertical centering */
             transform: translateY(-50%); /* Adjust position to center */
-            background: url("icons/show.ico") no-repeat center; /* Set background image for showing password */
+            background: url("icons/show.ico") no-repeat center; /* Background image for show password */
             background-size: 20px 20px; /* Size of the background image */
-            border: none; /* No border */
-            width: 25px; /* Button width */
-            height: 25px; /* Button height */
+            border: none; /* Remove border */
+            width: 25px; /* Width of button */
+            height: 25px; /* Height of button */
             cursor: pointer; /* Pointer cursor on hover */
-            opacity: 0.6; /* Set transparency */
+            opacity: 0.6; /* Slightly transparent */
         }
 
-        /* Change the button image when password is showing */
         .show-password.showing {
-            background: url("icons/hide.ico") no-repeat center; /* Set background image for hiding password */
+            background: url("icons/hide.ico") no-repeat center; /* Background image for hide password */
             background-size: 20px 20px; /* Size of the background image */
         }
 
         /* Button Styling */
         .btn {
-            background: #6a11cb; /* Button background color */
-            color: #fff; /* Text color */
-            border: none; /* No border */
+            background: #6a11cb; /* Background color for buttons */
+            color: #fff; /* White text color */
+            border: none; /* Remove border */
             padding: 0.8rem; /* Padding inside the button */
-            width: 100%; /* Full width */
+            width: 100%; /* Full width of button */
             border-radius: 25px; /* Rounded corners */
-            font-size: 1rem; /* Font size */
+            font-size: 1rem; /* Font size for buttons */
             cursor: pointer; /* Pointer cursor on hover */
-            transition: background 0.3s ease; /* Smooth background transition */
-            margin-top: 6rem; /* Space above the button */
+            transition: background 0.3s ease; /* Transition for hover effect */
+            margin-top: 6rem; /* Margin above button */
         }
 
         .btn:hover {
-            background: #2575fc; /* Change background color on hover */
+            background: #2575fc; /* Change background on hover */
         }
 
-        /* Additional options styling */
+        /* Additional Options */
         .options {
-            margin-top: 1rem; /* Space above the options */
-            font-size: 0.9rem; /* Font size */
-            display: flex; /* Use flexbox for layout */
-            justify-content: space-between; /* Space between items */
-            align-items: center; /* Center align items */
+            margin-top: 1rem; /* Margin above options */
+            font-size: 0.9rem; /* Font size for options */
+            display: flex; /* Flexbox layout for options */
+            justify-content: space-between; /* Space between options */
+            align-items: center; /* Center options vertically */
         }
 
-        /* Styling for labels within options */
         .options label {
-            display: flex; /* Use flexbox for label */
-            align-items: center; /* Center align items */
+            display: flex; /* Flexbox for label and checkbox */
+            align-items: center; /* Center items vertically */
         }
 
-        /* Checkbox spacing */
         .options input[type="checkbox"] {
-            margin-right: 0.3rem; /* Space to the right of the checkbox */
+            margin-right: 0.3rem; /* Margin to the right of checkbox */
         }
 
-        /* Link styling within options */
         .options a {
             color: #6a11cb; /* Link color */
             text-decoration: none; /* Remove underline */
-            transition: color 0.3s ease; /* Smooth color transition */
+            transition: color 0.3s ease; /* Transition for hover effect */
         }
 
-        /* Link hover effect */
         .options a:hover {
             color: #2575fc; /* Change link color on hover */
         }
 
         /* Footer message */
         .footer {
-            margin-top: 2rem; /* Space above footer */
-            text-align: center; /* Center text */
-            font-size: 0.9rem; /* Font size */
+            margin-top: 2rem; /* Margin above footer */
+            text-align: center; /* Center text in footer */
+            font-size: 0.9rem; /* Font size for footer */
         }
     </style>
 </head>
 <body>
-    <div class="login-container">
-        <h2>Welcome Back!</h2> <!-- Main heading -->
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <div class="company-name">nmbUSINESSES</div> <!-- Company name in navbar -->
+        <div class="nav-links">
+            <a href="#">Home</a>
+            <a href="#">Products</a>
+            <a href="#">Services</a>
+            <a href="#">Contact</a>
+        </div>
+        <button class="login-btn" onclick="toggleLogin()">Login</button> <!-- Login button to toggle visibility of the login form -->
+    </div>
+
+    <!-- Login Container -->
+    <div class="login-container" id="loginContainer">
+        <h2>Welcome!</h2> <!-- Header for the login form -->
         <form>
             <div class="input-group">
-                <img src="icons/email.ico" alt="User Icon"> <!-- Email icon -->
+                <img src="icons/email.ico" alt="User Icon"> <!-- Icon for email input -->
                 <input type="email" placeholder="Email" required> <!-- Email input field -->
             </div>
             <div class="input-group">
-                <img src="icons/pass.ico" alt="Password Icon"> <!-- Password icon -->
+                <img src="icons/pass.ico" alt="Password Icon"> <!-- Icon for password input -->
                 <input type="password" id="password" placeholder="Password" required> <!-- Password input field -->
                 <button type="button" class="show-password" onclick="togglePassword()"></button> <!-- Button to toggle password visibility -->
             </div>
             <div class="options">
                 <label>
-                    <input type="checkbox"> Remember Me <!-- Checkbox for remembering user login -->
+                    <input type="checkbox"> Remember Me <!-- Checkbox for remembering login -->
                 </label>
                 <a href="#">Forgot Password?</a> <!-- Link for forgotten password -->
             </div>
-            <button type="submit" class="btn">Sign In</button> <!-- Submit button -->
+            <button type="submit" class="btn">Sign In</button> <!-- Submit button for the form -->
         </form>
         <div class="footer">
-            <p>Don't have an account? <a href="#">Register Now</a></p> <!-- Link to registration page -->
+            <p>Don't have an account? <a href="#">Register Now</a></p> <!-- Footer message with registration link -->
         </div>
     </div>
 
     <script>
+        function toggleLogin() {
+            const loginContainer = document.getElementById('loginContainer'); // Get the login container element
+            // Toggle the display of the login container
+            if (loginContainer.style.display === "none" || loginContainer.style.display === "") {
+                loginContainer.style.display = "block"; // Show the login container
+            } else {
+                loginContainer.style.display = "none"; // Hide the login container
+            }
+        }
+
         function togglePassword() {
             const passwordField = document.getElementById('password'); // Get the password input field
-            const showPasswordButton = document.querySelector('.show-password'); // Get the show password button
-            if (passwordField.type === 'password') { // Check if the password is currently hidden
-                passwordField.type = 'text'; // Change the type to text to show the password
-                showPasswordButton.classList.add('showing'); // Add a class to change the button appearance
+            const showPasswordButton = document.querySelector('.show-password'); // Get the show/hide password button
+            if (passwordField.type === 'password') {
+                passwordField.type = 'text'; // Change input type to text to show password
+                showPasswordButton.classList.add('showing'); // Add class to change button appearance
             } else {
-                passwordField.type = 'password'; // Change the type back to password to hide it
-                showPasswordButton.classList.remove('showing'); // Remove the class to revert the button appearance
+                passwordField.type = 'password'; // Change input type back to password to hide it
+                showPasswordButton.classList.remove('showing'); // Remove class to revert button appearance
             }
         }
     </script>
