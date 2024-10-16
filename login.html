@@ -63,6 +63,7 @@
             border-radius: 25px; /* Rounded corners */
             cursor: pointer; /* Pointer cursor on hover */
             transition: background 0.3s; /* Transition for hover effect */
+			margin-left: 1.2rem; /* Margin to the left of the button */
         }
 
         .navbar .login-btn:hover {
@@ -70,7 +71,8 @@
         }
 
         /* Container Styling */
-        .login-container {
+        .login-container,
+        .register-container {
             background: rgba(255, 255, 255, 0.5); /* Semi-transparent background */
             padding: 3rem 2rem; /* Padding inside the container */
             width: 100%; /* Full width of the container */
@@ -85,7 +87,8 @@
             display: none; /* Initially hidden */
         }
 
-        .login-container h2 {
+        .login-container h2,
+        .register-container h2 {
             margin-bottom: 2rem; /* Margin below the header */
             color: #444; /* Darker color for text */
             font-size: 2rem; /* Font size for header */
@@ -96,6 +99,10 @@
             position: relative; /* Relative positioning for child elements */
             margin-bottom: 1.5rem; /* Margin below input groups */
         }
+		
+		.password {
+			margin-top: 4rem; /* Seperating the password input fields */
+		}
 
         .input-group input {
             width: 100%; /* Full width of input */
@@ -156,7 +163,7 @@
             font-size: 1rem; /* Font size for buttons */
             cursor: pointer; /* Pointer cursor on hover */
             transition: background 0.3s ease; /* Transition for hover effect */
-            margin-top: 6rem; /* Margin above button */
+            margin-top: 1.5rem; /* Margin above button */
         }
 
         .btn:hover {
@@ -170,6 +177,7 @@
             display: flex; /* Flexbox layout for options */
             justify-content: space-between; /* Space between options */
             align-items: center; /* Center options vertically */
+            margin-bottom: 3.5rem; /* Margin below the options */
         }
 
         .options label {
@@ -210,11 +218,12 @@
             <a href="#">Contact</a>
         </div>
         <button class="login-btn" onclick="toggleLogin()">Login</button> <!-- Login button to toggle visibility of the login form -->
+        <button class="login-btn" onclick="toggleRegister()">Sign Up</button> <!-- Sign Up button to toggle visibility of the registration form -->
     </div>
 
     <!-- Login Container -->
     <div class="login-container" id="loginContainer">
-        <h2>Welcome!</h2> <!-- Header for the login form -->
+        <h2>Login</h2> <!-- Header for the login form -->
         <form>
             <div class="input-group">
                 <img src="icons/email.ico" alt="User Icon"> <!-- Icon for email input -->
@@ -234,18 +243,71 @@
             <button type="submit" class="btn">Sign In</button> <!-- Submit button for the form -->
         </form>
         <div class="footer">
-            <p>Don't have an account? <a href="#">Register Now</a></p> <!-- Footer message with registration link -->
+            <p>Don't have an account? <a href="#" onclick="toggleRegister()">Register Now</a></p> <!-- Footer message with registration link -->
         </div>
+    </div>
+
+    <!-- Registration Form -->
+    <div class="register-container" id="registerContainer">
+        <h2>Sign Up</h2>
+        <div class="input-group">
+			<!--
+            <img src="icons/user.ico" alt="Full Name Icon"> <!-- Full Name icon -->
+            <input type="text" placeholder="Full Name" required> <!-- Input for full name -->
+        </div>
+        <div class="input-group">
+            <!--
+			<img src="icons/user-id.ico" alt="Registration Number Icon"> <!-- Registration Number icon -->
+            <input type="text" placeholder="Reg Number" required> <!-- Input for registration number -->
+        </div>
+        <div class="input-group">
+			<!--
+            <img src="icons/code.ico" alt="Course Code Icon"> <!-- Course Code icon -->
+            <input type="text" placeholder="Course Code" required> <!-- Input for course code -->
+        </div>
+        <div class="input-group">
+            <!--
+			<img src="icons/email.ico" alt="Email Icon"> <!-- Email icon -->
+            <input type="email" placeholder="Email" required> <!-- Input for email -->
+        </div>
+        <div class="input-group password">
+			<!--
+            <img src="icons/lock.ico" alt="Password Icon"> <!-- Password icon -->
+            <input type="password" placeholder="Password" required> <!-- Input for password -->
+			<!--
+            <button class="show-password" onclick="togglePassword()"> </button> <!-- Button to toggle password visibility -->
+        </div>
+        <div class="input-group">
+			<!--
+            <img src="icons/lock.ico" alt="Confirm Password Icon"> <!-- Confirm Password icon -->
+            <input type="password" placeholder="Confirm Password" required> <!-- Input for confirm password -->
+            <!-- 
+			<button class="show-password" onclick="togglePassword()"> </button> <!-- Button to toggle password visibility -->
+        </div>
+        <button class="btn">Register</button> <!-- Register button -->
+        <div class="footer">Already have an account? <a href="#" onclick="toggleLogin()">Login</a></div> <!-- Link to login -->
     </div>
 
     <script>
         function toggleLogin() {
-            const loginContainer = document.getElementById('loginContainer'); // Get the login container element
-            // Toggle the display of the login container
+            const loginContainer = document.getElementById('loginContainer');
+            const registerContainer = document.getElementById('registerContainer');
             if (loginContainer.style.display === "none" || loginContainer.style.display === "") {
-                loginContainer.style.display = "block"; // Show the login container
+                loginContainer.style.display = "block"; // Show login form
+                registerContainer.style.display = "none"; // Hide registration form
             } else {
-                loginContainer.style.display = "none"; // Hide the login container
+                loginContainer.style.display = "none"; // Hide login form
+            }
+        }
+
+        function toggleRegister() {
+            const registerContainer = document.getElementById('registerContainer');
+            const loginContainer = document.getElementById('loginContainer');
+            if (registerContainer.style.display === "none" || registerContainer.style.display === "") {
+                registerContainer.style.display = "block"; // Show registration form
+                loginContainer.style.display = "none"; // Hide login form
+            } else {
+                registerContainer.style.display = "none"; // Hide registration form
             }
         }
 
@@ -260,6 +322,6 @@
                 showPasswordButton.classList.remove('showing'); // Remove class to revert button appearance
             }
         }
-    </script>
+	</script>
 </body>
 </html>
